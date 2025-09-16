@@ -3,7 +3,7 @@
 from controllers.controle_produto import ControleProduto
 from db.database import get_db_connection
 
-
+#fazer uma função de compra
 def cadastrar_produto():
     controller = ControleProduto()
     print("\n=== Cadastro de Produtos ===")
