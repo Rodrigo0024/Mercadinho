@@ -23,7 +23,27 @@ class ControleProduto:
         except Exception as e:
             print(f"❌ Erro ao cadastrar produto: {e}")  
             connection.rollback()
-            return False
+            return False      
         finally:
             cursor.close()
             connection.close()
+    def mostrar_produtos(self):
+        connection = get_db_connection()
+        if not connection:
+            return False
+        cursor = connection.cursor()
+        try:
+            query = "SELECT id, nome, preco, descricao FROM produtos"
+            cursor.execute(query)
+            produtos = cursor.fetchall() 
+            return produtos
+        except Exception as e:
+            print(f"❌ Erro ao buscar produtos: {e}")
+            return []
+        finally:
+            cursor.close()
+            connection.close()
+                
+
+
+
